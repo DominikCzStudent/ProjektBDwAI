@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Projekt.Models
 {
@@ -18,6 +19,7 @@ namespace Projekt.Models
 
 		[Required(ErrorMessage = "Podanie ceny za noc jest wymagane.")]
 		[Range(0, 10000, ErrorMessage = "Cena za noc musi być z zakresu 0–10 000.")]
+		[Column(TypeName = "decimal(10,2)")]
 		[Display(Name = "Cena za noc")]
 		public decimal PricePerNight { get; set; }
 
