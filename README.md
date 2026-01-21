@@ -2,6 +2,7 @@
 ---
 ## 1. Opis projektu
 Aplikacja System rezerwacji hoteli jest webową aplikacją typu CRUD, stworzoną w technologii ASP.NET Core MVC, zaprojektowaną zgodnie z wzorcem Model–View–Controller. Umożliwia zarządzanie hotelami, pokojami oraz rezerwacjami, z uwzględnieniem autoryzacji użytkowników, ról, walidacji danych oraz utrwalania danych w relacyjnej bazie danych.
+
 Projekt bazy danych został zaprojektowany na poziomie logicznym i zaimplementowany w podejściu Code First z użyciem Entity Framework Core.
 ## 2. Wymagania systemowe
 Do uruchomienia projektu wymagane są:
@@ -90,9 +91,11 @@ Relacje:
 - Hotel → Rooms (1:N)
 - Room → Reservations (1:N)
 - ApplicationUser → Reservations (1:N)
+
 Encja ApplicationUser jest realizowana z użyciem ASP.NET Core Identity, co skutkuje wygenerowaniem kilku tabel technicznych w bazie danych (AspNetUsers, AspNetRoles, itd.), jednak logicznie stanowi jedną encję użytkownika.
 ## 8. API (CRUD)
-Aplikacja zawiera REST API CRUD odnoszące się do głównej encji systemu – rezerwacji.
+Aplikacja zawiera REST API CRUD odnoszące się do głównej encji systemu – rezerwacji. API zostało zaimplementowane jako kontroler typu ApiController, niezależny od warstwy widoków MVC. API jest dostępne po uruchomieniu aplikacji i wymaga uwierzytelnienia użytkownika (ASP.NET Core Identity). Dane są przesyłane i zwracane w formacie JSON z wykorzystaniem obiektu DTO (`ReservationDto`), co oddziela model API od modelu bazy danych.
+
 Endpoint API:
 ```
 api/ReservationsApi
@@ -106,6 +109,7 @@ Dodatkowo w projekcie zastosowane zostały:
 - Entity Framework Core (Code First),
 - ASP.NET Core Identity (autoryzacja i role),
 - Bootstrap (interfejs użytkownika).
+
 Projekt został podzielony na warstwy zgodnie z zasadami MVC, co ułatwia rozwój, testowanie oraz utrzymanie aplikacji.
 ---
 Autor: Dominik Czechowicz s171932
